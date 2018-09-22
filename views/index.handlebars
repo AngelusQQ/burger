@@ -5,22 +5,61 @@
   <META name="viewport" content="width=device-width, initial-scale=1.0">
 </HEAD>
 <STYLE>
-  body {
-    width:100%;
+
+  BODY {
+    width:80%;
   }
 
   #titleImage {
-    margin-left:43.5vw;
-    margin-right:50vw;
+    margin-left:40vw;
   }
 
   h1 {
     text-align:center;
+    margin-left:25%;
   }
+
+  FORM {
+    margin-left:41vw;
+  }
+
+  INPUT {
+    width:216px;
+    margin-bottom:20px;
+  }
+
+  BUTTON {
+    width:220px;
+    height:75px;
+  }
+
+  #submit {
+    width:200px;
+    height:50px;
+  }
+
+  #container {
+    margin-top:100px;
+    margin-left:10vw;
+    width:100%;
+    height:600px;
+    border-style:solid;
+    border-width:3px;
+  }
+
+  .burgers {
+    width:33%;
+  }
+
 </STYLE>
 <BODY>
-  <img id="titleImage" src="http://localhost:8080/imageDevelopment" height="200" width="256">
+  <img id="titleImage" src="http://localhost:8080/title" height="200" width="256">
   <H1>Please Enter Your Custom Order!</H1>
-  <FORM>
+  <FORM action="/submit-order" method="post">
+    <INPUT type="text" name="order"> <br>
+    <button type="submit"><img id="submit" src="http://localhost:8080/submit-image"></button>
   </FORM>
+
+  <div id="container">
+  </div>
 </BODY>
