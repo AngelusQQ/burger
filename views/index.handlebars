@@ -19,7 +19,7 @@
     margin-left:25%;
   }
 
-  FORM {
+  #order {
     margin-left:41vw;
   }
 
@@ -48,18 +48,27 @@
   }
 
   .burgers {
-    width:33%;
+    width:26.39vw;
+    text-align:center;
+    float:left;
   }
 
 </STYLE>
 <BODY>
   <img id="titleImage" src="http://localhost:8080/title" height="200" width="256">
   <H1>Please Enter Your Custom Order!</H1>
-  <FORM action="/submit-order" method="post">
+  <FORM id="order" action="/submit-order" method="post">
     <INPUT type="text" name="order"> <br>
     <button type="submit"><img id="submit" src="http://localhost:8080/submit-image"></button>
   </FORM>
 
   <div id="container">
+    <form>
+    {{#each burgers}}
+      {{#unless this.burger_devoured}}
+        <button type="submit" formmethod="post" formaction="/devour" class="burgers" name="{{this.burger_name}}"> Devour <br><br> {{this.burger_name}} </button>
+      {{/unless}}
+    {{/each}}
+  </form>
   </div>
 </BODY>

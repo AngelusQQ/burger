@@ -6,18 +6,36 @@ var path = require('path');
 var router = express.Router();
 //ROUTER
 
+//Double, Triple
+//Burger, Beef, Chicken, Fish, Veggie,
+//Lettuce, Tomato, Onions, Cheese, Pickles,
+
 router.get("/", function(req, res) {
-  res.render("index");
+  burger.all(function(data) {
+    var hbsObject = {
+      burgers: data
+    };
+    console.log(data);
+    res.render("index", hbsObject);
+  });
 });
 
 router.post("/submit-order", function(req, res) {
   console.log(req.body.order);
-  res.redirect("/");
-  // var node = document.createElement("<img>");
-  // node.setAttribute("src", )
-  //Double, Triple
-  //Burger, Beef, Chicken, Fish, Veggie,
-  //Lettuce, Tomato, Onions, Cheese, Pickles,
+  if(req.body.order.length === 0) { res.redirect("/"); } else {
+    burger.insert(req.body.order.toString(), function(result) {
+      console.log(result);
+      res.redirect("/");
+    });
+  }
+});
+
+router.post("/devour", function(req, res) {
+  console.log(Object.keys(req.body)[0]);
+  burger.update(Object.keys(req.body)[0], function(result) {
+    console.log(result);
+    res.redirect("/");
+  });
 });
 
 router.get("/title", function(req, res) {
